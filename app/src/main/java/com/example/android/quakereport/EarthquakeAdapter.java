@@ -52,8 +52,25 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView magnitudeView = (TextView) listItemView.findViewById(R.id.magnitude);
         magnitudeView.setText(currentEarthquake.getMagnitude());
 
-        TextView locationView = (TextView) listItemView.findViewById(R.id.location);
-        locationView.setText(currentEarthquake.getLocation());
+        String location = currentEarthquake.getLocation();
+
+        String distance;
+        String city;
+        int i = location.indexOf("of");
+        if (i == -1) {
+            distance = "Near the";
+            city = location;
+        } else {
+            distance = location.substring(0, i+2);
+            city = location.substring(i + 2 , location.length()-1);
+        }
+
+
+        TextView kmView = (TextView) listItemView.findViewById(R.id.distance);
+        kmView.setText(distance);
+
+        TextView cityView = (TextView) listItemView.findViewById(R.id.city);
+        cityView.setText(city);
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
