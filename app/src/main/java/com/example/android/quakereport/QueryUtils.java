@@ -58,11 +58,16 @@ public final class QueryUtils {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 JSONObject properObject = jsonObject.optJSONObject("properties");
 
-                int mag =  properObject.optInt("mag");
-                String location = properObject.optString("place").toString();
-
+                double magnitude =  properObject.getDouble("mag");
+                String location = properObject.getString("place").toString();
                 long time = properObject.getLong("time");
-                earthquakes.add(new Earthquake(mag+"", location, time));
+
+                // Create a new {@link Earthquake} object with the magnitude, location, time,
+                // and url from the JSON response.
+                Earthquake earthquake = new Earthquake(magnitude, location, time);
+
+                // Add the new {@link Earthquake} to the list of earthquakes.
+                earthquakes.add(earthquake);
             }
 
         } catch (JSONException e) {

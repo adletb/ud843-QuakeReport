@@ -1,5 +1,7 @@
 package com.example.android.quakereport;
 
+import static com.example.android.quakereport.R.id.magnitude;
+
 /**
  * Created by Adlet on 14.07.2017.
  */
@@ -7,7 +9,7 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     /** Magnitude of the earthquake */
-    private String mMagnitude;
+    private double mMagnitude;
 
     /** Location of the earthquake */
     private String mLocation;
@@ -26,7 +28,7 @@ public class Earthquake {
      * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
      *  earthquake happened
      */
-    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds) {
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
@@ -35,7 +37,7 @@ public class Earthquake {
     /**
      *  Return the magnitude of the earthquake
      */
-    public String getMagnitude() {
+    public double getMagnitude() {
         return mMagnitude;
     }
     /**
