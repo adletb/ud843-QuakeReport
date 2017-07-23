@@ -61,13 +61,16 @@ public final class QueryUtils {
                 double magnitude =  properObject.getDouble("mag");
                 String location = properObject.getString("place").toString();
                 long time = properObject.getLong("time");
+                String url = properObject.getString("url");
 
                 // Create a new {@link Earthquake} object with the magnitude, location, time,
                 // and url from the JSON response.
-                Earthquake earthquake = new Earthquake(magnitude, location, time);
+                Earthquake earthquake = new Earthquake(magnitude, location, time, url);
 
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 earthquakes.add(earthquake);
+
+
             }
 
         } catch (JSONException e) {
